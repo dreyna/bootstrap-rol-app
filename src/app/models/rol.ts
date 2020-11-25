@@ -1,5 +1,4 @@
 export class Rol {
-    id_rol:number;
-    nomrol:string;
-    estado: number;
+    idrol:number;
+    nombre:string;
 }

@@ -8,8 +8,8 @@
         <div class="card-body"> 
             <div class="form-group">
                 <label for="a">Rol</label>
-                <input type="text" name="nomrol" class="form-control" [(ngModel)]="rolModel.nomrol">
-                <input type="hidden" name="id_rol" class="form-control" [(ngModel)]="rolModel.id_rol">
+                <input type="text" name="nombre" class="form-control" [(ngModel)]="rolModel.nombre">
+                <input type="hidden" name="idrol" class="form-control" [(ngModel)]="rolModel.idrol">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" (click)="create()">{{accion}}</button>
@@ -23,20 +23,18 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">ROL</th>
-            <th scope="col">Estado</th>
             <th scope="coll" colspan="2">Acción</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let rol of roles">
-            <td>{{rol.ID_ROL}}</td>
-            <td>{{rol.NOMROL}}</td>
-            <td>{{rol.ESTADO}}</td>
+            <td>{{rol.IDROL}}</td>
+            <td>{{rol.NOMBRE}}</td>
             <td>
-              <a type="button" class="btn btn-warning" (click)="cargarRol(rol.ID_ROL)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a type="button" class="btn btn-warning" (click)="cargarRol(rol.IDROL)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             </td>
             <td>
-              <a type="button" class="btn btn-danger"(click)="delLogica(rol.ID_ROL)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              <a type="button" class="btn btn-danger"(click)="delLogica(rol.IDROL)"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
           </tr>          
         </tbody>

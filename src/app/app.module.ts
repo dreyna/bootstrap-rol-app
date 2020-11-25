@@ -7,16 +7,18 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/template/menu/menu.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { ListarComponent } from './components/roles/listar/listar.component';
-import { UpdateComponent } from './components/roles/update/update.component';
 import { RolService } from './services/rol.service';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component'
+
+
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     FooterComponent,
     ListarComponent,
-    UpdateComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

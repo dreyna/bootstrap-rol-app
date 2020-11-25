@@ -17,7 +17,7 @@ export class ListarComponent implements OnInit {
   
   constructor(private rolService: RolService, private router: Router) { }
   ngOnInit(): void {
-    this.rolModel.id_rol=0;
+    this.rolModel.idrol=0;
     this.listar();
   }
   delRol(num: number): void {
@@ -75,12 +75,12 @@ export class ListarComponent implements OnInit {
     })
   }
   public create(): void {
-    if(this.rolModel.id_rol==0){
+    if(this.rolModel.idrol==0){
     this.rolService.addRol(this.rolModel).subscribe(
       response => {
         this.listar();
-        swal.fire('Nuevo Rol', `Rol ${this.rolModel.nomrol} creado con exito`, "success")
-        this.rolModel.nomrol= '';
+        swal.fire('Nuevo Rol', `Rol ${this.rolModel.nombre} creado con exito`, "success")
+        this.rolModel.nombre= '';
       })
     }else{
       this.rolService.updateRol(this.rolModel).subscribe(
@@ -95,7 +95,7 @@ export class ListarComponent implements OnInit {
             confirmButtonText: 'Yes, update it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              this.rolModel.id_rol=0;
+              this.rolModel.idrol=0;
               this.titulo = 'Crear'
               this.accion = 'Registrar';
               this.listar();
@@ -104,7 +104,7 @@ export class ListarComponent implements OnInit {
                 'El registro ha sido Modificado.',
                 'success'
               )
-              this.rolModel.nomrol= '';
+              this.rolModel.nombre= '';
             }
           })    
       })
@@ -117,8 +117,8 @@ export class ListarComponent implements OnInit {
         this.rolService.getRol(num).subscribe(
           (data)=>{
           this.rol=data['cursor_roles'] 
-          this.rolModel.nomrol=this.rol[0].NOMROL;
-          this.rolModel.id_rol=this.rol[0].ID_ROL;
+          this.rolModel.nombre=this.rol[0].NOMBRE;
+          this.rolModel.idrol=this.rol[0].IDROL;
         })
       }
   }
