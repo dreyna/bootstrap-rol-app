@@ -10,6 +10,8 @@ import { ListarComponent } from './components/roles/listar/listar.component';
 import { RolService } from './services/rol.service';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component'
+import { AuthService } from './services/auth.service';
+import { ProductoComponent } from './components/producto/producto.component';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { LoginComponent } from './components/login/login.component'
     MenuComponent,
     FooterComponent,
     ListarComponent,
-    LoginComponent
+    LoginComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { LoginComponent } from './components/login/login.component'
     HttpClientModule
   ],
   providers: [
-    RolService
+    RolService,AuthService
   ],
   bootstrap: [AppComponent]
 })

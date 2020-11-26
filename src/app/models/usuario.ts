@@ -1,8 +1,8 @@
 export class Usuario{
     idusuario : number;
+    nombres : string;
     username : string;
     password : string;
-    nombres : string;
     roles:string[];
     accesos:string[];
 }
