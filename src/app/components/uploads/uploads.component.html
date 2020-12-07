@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 50px;">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+          Subir Archivos
+        </div>
+        <div class="card-body">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" (change)="seleccionarArchivo($event)" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile04">Seleccionar Archivo</label>
+                </div>
+                <div class="input-group-append">
+                    <button (click)="obtenerArchivo()" class="btn btn-outline-success" type="button" id="inputGroupFileAddon04" >Upload</button>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+

@@ -1,17 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/template/menu/menu.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { ListarComponent } from './components/roles/listar/listar.component';
 import { RolService } from './services/rol.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component'
 import { AuthService } from './services/auth.service';
 import { ProductoComponent } from './components/producto/producto.component';
+import { InterceptorService } from './interceptores/interceptor.service';
+import { UploadsComponent } from './components/uploads/uploads.component';
 
 
 @NgModule({
@@ -21,9 +23,11 @@ import { ProductoComponent } from './components/producto/producto.component';
     FooterComponent,
     ListarComponent,
     LoginComponent,
-    ProductoComponent
+    ProductoComponent,
+    UploadsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -31,7 +35,12 @@ import { ProductoComponent } from './components/producto/producto.component';
     HttpClientModule
   ],
   providers: [
-    RolService,AuthService
+    RolService,AuthService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

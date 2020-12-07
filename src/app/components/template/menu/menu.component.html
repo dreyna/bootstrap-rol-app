@@ -6,12 +6,14 @@
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <div *ngIf="authService.isAuthenticated()" class="navbar-nav" >
-            <a href="#" class="nav-item nav-link active"><i class="fa fa-home margen" aria-hidden="true"></i>Home</a>
+            <a routerLink="{{menu.URL}}" href="#" class="nav-item nav-link active" *ngFor="let menu of menus"><i class="{{menu.ICONO}} margen" aria-hidden="true"></i>{{menu.NOMACCESO}}</a>
+            <!--
             <a href="#" class="nav-item nav-link"><i class="fa fa-users margen" aria-hidden="true"></i> Clientes</a>
             <a href="#" class="nav-item nav-link"><i class="fa fa-cart-plus margen" aria-hidden="true"></i> Ventas</a>
             <a routerLink="producto" href="#" class="nav-item nav-link"><i class="fa fa-product-hunt margen" aria-hidden="true"></i>Productos</a>
             <a routerLink="listar" href="#" class="nav-item nav-link"><i class="fa fa-id-card-o margen" aria-hidden="true"></i>Rol</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-line-chart margen" aria-hidden="true"></i>Reportes</a>
+            <a routerLink="uploads" class="nav-item nav-link"><i class="fa fa-line-chart margen" aria-hidden="true"></i>Upload</a>
+            -->
         </div>
         
         <div class="navbar-nav ml-auto" style="margin-right: 50px;">

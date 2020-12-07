@@ -50,8 +50,9 @@ export class AuthService {
     this._usuario.username = payload.user;  
     this._usuario.nombres = payload.nombre;
     this._usuario.roles = payload.authorities;  
-    this._usuario.accesos = payload.acceso;
-    sessionStorage.setItem('usuario',JSON.stringify(this._usuario)); 
+    this._usuario.accesos = payload.accesos;
+    sessionStorage.setItem('usuario',JSON.stringify(this._usuario));
+     
    
   }
   guadarToken(accesToken: string):void{

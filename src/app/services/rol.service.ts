@@ -17,6 +17,7 @@ export class RolService {
     private authService: AuthService) { }
   private addAuthorizationHeader(){
     let token = this.authService.token;
+              
     if(token!=null){
       return this.httpHeaders.append('Authorization','Bearer '+ token);
     }

@@ -17,7 +17,6 @@ export class ListarComponent implements OnInit {
   
   constructor(private rolService: RolService, private router: Router) { }
   ngOnInit(): void {
-    alert("sasas");
     this.rolModel.idrol=0;
     this.listar();
   }
@@ -45,7 +44,6 @@ export class ListarComponent implements OnInit {
     })
   }
   listar(): void {
-    alert("asas");
     this.rolService.getRoles().subscribe(
       (data) => {
         this.roles = data['cursor_roles'];
