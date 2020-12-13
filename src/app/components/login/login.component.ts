@@ -14,7 +14,7 @@ usuario:Usuario;
   constructor(private authService:AuthService, private router:Router) { 
     this.usuario = new Usuario();
   }
-  ngOnInit(): void {
+  ngOnInit(): void {    
     if(this.authService.isAuthenticated()){
       swal.fire('Login',`Hola ${this.authService.usuario.username} ya estas autenticado!`,'info');
       this.router.navigate(['/']);

@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { ProductoComponent } from './components/producto/producto.component';
 import { InterceptorService } from './interceptores/interceptor.service';
 import { UploadsComponent } from './components/uploads/uploads.component';
+import { InterceptorErrorService } from './interceptores/interceptorerror.service';
 
 
 @NgModule({
@@ -39,6 +40,11 @@ import { UploadsComponent } from './components/uploads/uploads.component';
     {
       provide:HTTP_INTERCEPTORS,
       useClass: InterceptorService,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: InterceptorErrorService,
       multi:true
     }
   ],

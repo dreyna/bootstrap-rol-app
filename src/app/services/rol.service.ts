@@ -15,14 +15,7 @@ export class RolService {
 
   constructor(private http: HttpClient, private router:Router,
     private authService: AuthService) { }
-  private addAuthorizationHeader(){
-    let token = this.authService.token;
-              
-    if(token!=null){
-      return this.httpHeaders.append('Authorization','Bearer '+ token);
-    }
-    return this.httpHeaders;
-  }
+
   private isNoAutorization(e): boolean{
     if(e.status==401 || e.status==403){
       this.router.navigate(['/login'])
@@ -31,15 +24,10 @@ export class RolService {
     return false;
   }
   getRoles():Observable<any>{
-    return this.http.get(this.rolUrl+'/all',{headers:this.addAuthorizationHeader()}).pipe(
-      catchError(e =>{
-        this.isNoAutorization(e);
-        return throwError(e);
-      })
-    );
+    return this.http.get(this.rolUrl+'/all');
   }
   getRol(id:number):Observable<any> {
-    return this.http.get(`${this.rolUrl}/${id}`,{headers:this.addAuthorizationHeader()}).pipe(
+    return this.http.get(`${this.rolUrl}/${id}`).pipe(
       catchError(e =>{
         this.router.navigate(['/roles']);
         console.error(e.error.mensaje);
@@ -47,9 +35,9 @@ export class RolService {
           return throwError(e);
       })
     );
-  }
+  }/*
   updateLogica(id:number):Observable<number> {
-    return this.http.put<number>(`${this.rolUrl}/update/logica/${id}`,{headers:this.addAuthorizationHeader()}).pipe(
+    return this.http.put<number>(this.rolUrl+"/update/logica/"+id).pipe(
       map((response:any) =>response),
       catchError(e =>{
         if(this.isNoAutorization(e)){
@@ -63,15 +51,12 @@ export class RolService {
         return throwError(e);
       })
     );
-  }
+  }*/
   addRol(rol: Rol): Observable<number>{
-    return this.http.post<number>(this.rolUrl+"/add", rol, {headers:this.addAuthorizationHeader()}).pipe(
+    return this.http.post<number>(this.rolUrl+"/add", rol).pipe(
       map((response:any) =>response),
       catchError(e =>{
-        if(this.isNoAutorization(e)){
-        return throwError(e)
-        }
-        if(e.status == 400){
+            if(e.status == 400){
           return throwError(e);
         }
         console.error(e.error.mensaje);
@@ -82,11 +67,9 @@ export class RolService {
   }
 
   deleteRol(id: number): Observable<number>{
-    return this.http.delete<number>(this.rolUrl+"/delete/"+id ,{headers:this.addAuthorizationHeader()}).pipe(
+    return this.http.delete<number>(this.rolUrl+"/delete/"+id ).pipe(
     catchError(e =>{
-      if(this.isNoAutorization(e)){
-      return throwError(e)
-      }
+ 
       console.error(e.error.mensaje);
       Swal.fire(e.error.mensaje, e.error.error, 'error');
       return throwError(e);
@@ -95,12 +78,9 @@ export class RolService {
   }
 
   updateRol(rol: Rol):Observable<number> {
-    return this.http.put<number>(`${this.rolUrl}/update/${rol.idrol}`, rol,{headers:this.addAuthorizationHeader()}).pipe(
+    return this.http.put<number>(`${this.rolUrl}/update/${rol.idrol}`, rol).pipe(
       map((response:any) =>response),
       catchError(e =>{
-        if(this.isNoAutorization(e)){
-        return throwError(e)
-        }
         if(e.status == 400){
           return throwError(e);
         }

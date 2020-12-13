@@ -10,10 +10,14 @@ export class InterceptorService implements HttpInterceptor{
 
   constructor(private authService:AuthService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    const rclone = req.clone(
-
-    );
+    const token = this.authService.token;
+    if(token){
+      req = req.clone({
+          setHeaders:{
+            Authorization:`Bearer ${token}`
+          }
+      }); 
+    }
     return next.handle(req);
   }
 }

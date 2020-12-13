@@ -52,7 +52,7 @@ export class ListarComponent implements OnInit {
         console.log("Error en el listar-rol-component")
       }
     )
-  }
+  }/*
   delLogica(num: number): void {
     swal.fire({
       title: 'Estas seguro?',
@@ -74,7 +74,7 @@ export class ListarComponent implements OnInit {
           })
       }
     })
-  }
+  }*/
   public create(): void {
     if(this.rolModel.idrol==0){
     this.rolService.addRol(this.rolModel).subscribe(
